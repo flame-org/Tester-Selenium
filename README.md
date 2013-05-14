@@ -64,13 +64,14 @@ class HomePresenterTest extends SeleniumTestCase
 	`java -jar selenium-server-standalone-<version>.jar`
 4. Run your tests
 
+#### How to run exmaple selenium tests?
+`php libs/bin/tester example/`
+
 ###Requirements
-* [nette/ester](https://github.com/nette/tester)
+* [nette/tester](https://github.com/nette/tester)
 * [element-34/php-webdriver](https://github.com/Element-34/php-webdriver)
 * [nette/nette](https://github.com/nette/nette) - For running example tests only
 
-#### How to run exmaple selenium tests
-`php libs/bin/tester example/`
-
 **For more information please visit documentation of [php webdriver](https://github.com/Element-34/php-webdriver).**
+
 **There are [more examples](https://github.com/facebook/php-webdriver/wiki/Example-command-reference) for working with webdriver session**
