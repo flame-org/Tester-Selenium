@@ -2,6 +2,7 @@
 /**
  * Class HomePresenterTest
  *
+ * @testcase \Flame\Tester\Example\HomePresenterTest
  * @author: Jiří Šifalda <sifalda.jiri@gmail.com>
  * @date: 14.05.13
  */
@@ -40,6 +41,23 @@ class HomePresenterTest extends SeleniumTestCase
 		$this->open('/');
 
 		Assert::equal('Freelance Web Developer', $this->findElementBy(Element::CLASS_NAME, 'subhead')->text());
+	}
+
+	public function testTitle()
+	{
+		$this->open('/');
+
+		$titleElement = $this->findElementBy(Element::TAG_NAME, 'title');
+		Assert::equal('Jiří Šifalda - Freelance Web Developer', $titleElement->text());
+	}
+
+	public function testClickRedirect()
+	{
+		$this->open('/');
+
+		$this->findElementBy(Element::LINK_TEXT, 'Github')->click();
+		$this->session->focusWindow($this->session->window_handles()[1]);
+		Assert::equal('https://github.com/jsifalda', $this->getCurrentUrl());
 	}
 
 }
