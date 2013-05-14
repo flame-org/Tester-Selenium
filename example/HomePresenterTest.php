@@ -8,16 +8,38 @@
 namespace Flame\Tester\Example;
 
 use Flame\Tester\SeleniumTestCase;
+use Flame\WebDriver\Element;
+use Tester\Assert;
 
 $container = require __DIR__ . '/bootstrap.php';
 
 class HomePresenterTest extends SeleniumTestCase
 {
 
-
-	public function testOpen()
+	public function setUp()
 	{
-		$this->open('http://www.facebook.com');
+		parent::setUp();
+
+		$this->setTestingUrl('jsifalda.name');
+	}
+
+
+	public function testName()
+	{
+		$this->open('/');
+		Assert::equal(
+			'Jiří Šifalda',
+			$this->findElementBy(Element::CLASS_NAME, 'nine')
+				->element(Element::TAG_NAME, 'h1')
+				->text()
+		);
+	}
+
+	public function testAboutMe()
+	{
+		$this->open('/');
+
+		Assert::equal('Freelance Web Developer', $this->findElementBy(Element::CLASS_NAME, 'subhead')->text());
 	}
 
 }
