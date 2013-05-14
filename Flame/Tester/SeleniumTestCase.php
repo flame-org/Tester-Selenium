@@ -91,6 +91,14 @@ class SeleniumTestCase extends TestCase
 	}
 
 	/**
+	 * @return string
+	 */
+	public function getCurrentUrl()
+	{
+		return $this->session->url();
+	}
+
+	/**
 	 * @param $selector
 	 * @param $name
 	 * @return null|\PHPWebDriver_WebDriverElement
