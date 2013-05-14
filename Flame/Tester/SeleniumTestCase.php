@@ -91,6 +91,16 @@ class SeleniumTestCase extends TestCase
 	}
 
 	/**
+	 * @param $selector
+	 * @param $name
+	 * @return null|\PHPWebDriver_WebDriverElement
+	 */
+	public function findElementBy($selector, $name)
+	{
+		return $this->session->element($selector, $name);
+	}
+
+	/**
 	 * @return \PHPWebDriver_WebDriver
 	 */
 	public function getWebDriver()
