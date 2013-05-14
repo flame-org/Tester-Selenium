@@ -54,7 +54,7 @@ class SeleniumTestCase extends TestCase
 	 */
 	public function setBrowser($name)
 	{
-		if(in_array($name, $this->validBrowsers)) {
+		if(!in_array($name, $this->validBrowsers)) {
 			throw new InvalidArgumentException('Browser with name "' . $name . '" is not on supported');
 		}
 
