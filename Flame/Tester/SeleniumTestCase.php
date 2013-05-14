@@ -15,9 +15,6 @@ class SeleniumTestCase extends TestCase
 
 	const SERVER_URL = 'http://127.0.0.1:4444/wd/hub';
 
-	/** @var bool  */
-	private $setUpCheck = false;
-
 	/** @var \PHPWebDriver_WebDriverSession */
 	protected $session;
 
@@ -43,8 +40,6 @@ class SeleniumTestCase extends TestCase
 
 	public function setUp()
 	{
-		$this->setUpCheck = true;
-
 		$this->webDriver = new \PHPWebDriver_WebDriver(self::SERVER_URL);
 		$this->session = $this->webDriver->session($this->properties['browser']);
 	}
@@ -100,20 +95,6 @@ class SeleniumTestCase extends TestCase
 	public function getSession()
 	{
 		return $this->session;
-	}
-
-	/**
-	 * @param       $name
-	 * @param array $args
-	 * @throws InvalidStateException
-	 */
-	public function runTest($name, array $args = array())
-	{
-		if(!$this->setUpCheck) {
-			throw new InvalidStateException('Your test case ' . get_called_class() . ' doesn\'t call parent::setUp()');
-		}
-
-		parent::runTest($name, $args);
 	}
 
 }
