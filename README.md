@@ -1,4 +1,4 @@
-tester-selenium
+Nette/Tester selenium 2 extension
 ===============
 
-Support of Selenum2 testing for nette/tester
+Support of testing with Selenium 2 on nette/tester
