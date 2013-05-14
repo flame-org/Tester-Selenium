@@ -22,7 +22,10 @@ class SeleniumTestCase extends TestCase
 	private $webDriver;
 
 	/** @var array */
-	private $properties = array();
+	private $properties = array(
+		'browser' => 'firefox',
+		'url' => 'http://localhost'
+	);
 
 	/** @var array  */
 	private $validBrowsers = array(
