@@ -1,4 +1,24 @@
 {
+    "name": "flame/tester-selenium",
+    "type": "library",
+    "description": "Support of Selenim 2 testing for nette/tester",
+    "keywords": ["framework", "nette", "selenium", "flame", "tests", "selenium2"],
+    "homepage": "https://github.com/flame-org/tester-selenium",
+    "license": "BSD-2-Clause-FreeBSD",
+    "minimum-stability":"dev",
+
+    "authors": [
+        {
+            "name": "Jiří Šifalda",
+            "homepage": "http://jsifalda.name/"
+        }
+    ],
+
+    "support":{
+        "email":"flame@jsifalda.name",
+        "issues":"https://github.com/flame-org/tester-selenium/issues"
+    },
+
     "config": {
         "vendor-dir": "libs"
     },
@@ -10,6 +30,13 @@
     },
 
     "require-dev": {
-        "nette/nette": "@dev"
+        "nette/nette": "2.0.*"
+    },
+
+    "autoload": {
+        "psr-0": {"Flame": ""},
+        "classmap": [
+            "Flame/Tester/exceptions.php"
+        ]
     }
 }

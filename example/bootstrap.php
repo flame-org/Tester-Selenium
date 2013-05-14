@@ -11,11 +11,10 @@ function id($val) {
 	return $val;
 }
 
-$configurator = new Nette\Configurator;
+$configurator = new \Nette\Config\Configurator;
 $configurator->setDebugMode(FALSE);
 $configurator->setTempDirectory(__DIR__ . '/../temp');
 $configurator->createRobotLoader()
 	->addDirectory(__DIR__)
-	->addDirectory(__DIR__ . '/../Flame')
 	->register();
 return $configurator->createContainer();
