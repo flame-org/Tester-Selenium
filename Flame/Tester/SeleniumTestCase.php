@@ -100,4 +100,9 @@ class SeleniumTestCase extends TestCase
 		return $this->session;
 	}
 
+	public function tearDown()
+	{
+		$this->session->close();
+	}
+
 }
