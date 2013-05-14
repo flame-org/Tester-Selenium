@@ -1,0 +1,15 @@
+{
+    "config": {
+        "vendor-dir": "libs"
+    },
+
+    "require": {
+        "php": ">= 5.3.0",
+        "nette/tester": "0.9",
+        "element-34/php-webdriver": "1.9.0"
+    },
+
+    "require-dev": {
+        "nette/nette": "@dev"
+    }
+}
