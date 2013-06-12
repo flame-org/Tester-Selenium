@@ -58,11 +58,12 @@ class HomePresenterTest extends SeleniumTestCase
 ```
 
 ##Instalation
-1. Install dependencies with composer
-2. Download java server from [http://code.google.com/p/selenium/downloads/list](http://code.google.com/p/selenium/downloads/list)
-3. Run java server
+1. Add `flame/tester-selenium` in your dev-dependencies
+2. Install tester's dependencies with composer
+3. Download java server from [http://code.google.com/p/selenium/downloads/list](http://code.google.com/p/selenium/downloads/list)
+4. Run java server
 	`java -jar selenium-server-standalone-<version>.jar`
-4. Run your tests
+5. Run your tests
 
 #### How to run exmaple selenium tests?
 `php libs/bin/tester example/`
