@@ -7,7 +7,7 @@ The simple way for support of testing with Selenium 2 on nette/tester
 
 ```php
 
-class HomePresenterTest extends SeleniumTestCase
+class HomePresenterTest extends TestCase
 {
 
 	public function testName()
