@@ -1,6 +1,6 @@
 <?php
 
-namespace Flame\Tester;
+namespace Flame\Tester\Selenium;
 
 class InvalidStateException extends \RuntimeException
 {

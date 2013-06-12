@@ -10,48 +10,40 @@ The simple way for support of testing with Selenium 2 on nette/tester
 class HomePresenterTest extends SeleniumTestCase
 {
 
-	public function setUp()
-	{
-		parent::setUp();
-
-		$this->setTestingUrl('jsifalda.name');
-	}
-
-
 	public function testName()
-	{
-		$this->open('/');
-		Assert::equal(
-			'Jiří Šifalda',
-			$this->findElementBy(Element::CLASS_NAME, 'nine')
-				->element(Element::TAG_NAME, 'h1')
-				->text()
-		);
-	}
+    {
+        $this->browserCase->open('http://jsifalda.name');
+        Assert::equal(
+            'Jiří Šifalda',
+            $this->browserCase->findElementBy(Element::CLASS_NAME, 'nine')
+                ->element(Element::TAG_NAME, 'h1')
+                ->text()
+        );
+    }
 
-	public function testAboutMe()
-	{
-		$this->open('/');
+    public function testAboutMe()
+    {
+        $this->browserCase->open('http://jsifalda.name');
 
-		Assert::equal('Freelance Web Developer', $this->findElementBy(Element::CLASS_NAME, 'subhead')->text());
-	}
+        Assert::equal('Freelance Web Developer', $this->browserCase->findElementBy(Element::CLASS_NAME, 'subhead')->text());
+    }
 
-	public function testTitle()
-	{
-		$this->open('/');
+    public function testTitle()
+    {
+        $this->browserCase->open('http://jsifalda.name');
 
-		$titleElement = $this->findElementBy(Element::TAG_NAME, 'title');
-		Assert::equal('Jiří Šifalda - Freelance Web Developer', $titleElement->text());
-	}
+        $titleElement = $this->browserCase->findElementBy(Element::TAG_NAME, 'title');
+        Assert::equal('Jiří Šifalda - Freelance Web Developer', $titleElement->text());
+    }
 
-	public function testClickRedirect()
-	{
-		$this->open('/');
+    public function testClickRedirect()
+    {
+        $this->browserCase->open('http://jsifalda.name');
 
-		$this->findElementBy(Element::LINK_TEXT, 'Github')->click();
-		$this->session->focusWindow($this->session->window_handles()[1]);
-		Assert::equal('https://github.com/jsifalda', $this->getCurrentUrl());
-	}
+        $this->browserCase->findElementBy(Element::LINK_TEXT, 'Github')->click();
+        $this->browserCase->getSession()->focusWindow($this->browserCase->getSession()->getWindow(1));
+        Assert::equal('https://github.com/jsifalda', $this->browserCase->getCurrentUrl());
+    }
 
 }
 

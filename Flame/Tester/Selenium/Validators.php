@@ -5,7 +5,7 @@
  * @author: Jiří Šifalda <sifalda.jiri@gmail.com>
  * @date: 14.05.13
  */
-namespace Flame\Tester;
+namespace Flame\Tester\Selenium;
 
 class Validators
 {

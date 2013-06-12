@@ -7,29 +7,21 @@
  */
 namespace Flame\Tester\Tests;
 
-use Flame\Tester\SeleniumTestCase;
+use Flame\Tester\Selenium\TestCase;
 use Flame\WebDriver\Element;
 use Tester\Assert;
 
 $container = require __DIR__ . '/bootstrap.php';
 
-class HomePresenterTest extends SeleniumTestCase
+class HomePresenterTest extends TestCase
 {
-
-	public function setUp()
-	{
-		parent::setUp();
-
-		$this->setTestingUrl('jsifalda.name');
-	}
-
 
 	public function testName()
 	{
-		$this->open('/');
+		$this->browserCase->open('http://jsifalda.name');
 		Assert::equal(
 			'Jiří Šifalda',
-			$this->findElementBy(Element::CLASS_NAME, 'nine')
+			$this->browserCase->findElementBy(Element::CLASS_NAME, 'nine')
 				->element(Element::TAG_NAME, 'h1')
 				->text()
 		);
@@ -37,26 +29,26 @@ class HomePresenterTest extends SeleniumTestCase
 
 	public function testAboutMe()
 	{
-		$this->open('/');
+		$this->browserCase->open('http://jsifalda.name');
 
-		Assert::equal('Freelance Web Developer', $this->findElementBy(Element::CLASS_NAME, 'subhead')->text());
+		Assert::equal('Freelance Web Developer', $this->browserCase->findElementBy(Element::CLASS_NAME, 'subhead')->text());
 	}
 
 	public function testTitle()
 	{
-		$this->open('/');
+		$this->browserCase->open('http://jsifalda.name');
 
-		$titleElement = $this->findElementBy(Element::TAG_NAME, 'title');
+		$titleElement = $this->browserCase->findElementBy(Element::TAG_NAME, 'title');
 		Assert::equal('Jiří Šifalda - Freelance Web Developer', $titleElement->text());
 	}
 
 	public function testClickRedirect()
 	{
-		$this->open('/');
+		$this->browserCase->open('http://jsifalda.name');
 
-		$this->findElementBy(Element::LINK_TEXT, 'Github')->click();
-		$this->session->focusWindow($this->session->window_handles()[1]);
-		Assert::equal('https://github.com/jsifalda', $this->getCurrentUrl());
+		$this->browserCase->findElementBy(Element::LINK_TEXT, 'Github')->click();
+		$this->browserCase->getSession()->focusWindow($this->browserCase->getSession()->getWindow(1));
+		Assert::equal('https://github.com/jsifalda', $this->browserCase->getCurrentUrl());
 	}
 
 }
