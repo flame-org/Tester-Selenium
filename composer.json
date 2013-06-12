@@ -3,7 +3,7 @@
     "type": "library",
     "description": "Support of Selenim 2 testing for nette/tester",
     "keywords": ["framework", "nette", "selenium", "flame", "tests", "selenium2"],
-    "homepage": "https://github.com/flame-org/tester-selenium",
+    "homepage": "https://github.com/flame-org/Tester-Selenium",
     "license": "BSD-2-Clause-FreeBSD",
     "minimum-stability":"dev",
 
@@ -16,7 +16,7 @@
 
     "support":{
         "email":"flame@jsifalda.name",
-        "issues":"https://github.com/flame-org/tester-selenium/issues"
+        "issues":"https://github.com/flame-org/Tester-Selenium/issues"
     },
 
     "config": {
