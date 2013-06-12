@@ -36,7 +36,7 @@
     "autoload": {
         "psr-0": {"Flame": ""},
         "classmap": [
-            "Flame/SeleniumTester/exceptions.php"
+            "Flame/Tester/Selenium/exceptions.php"
         ]
     }
 }
