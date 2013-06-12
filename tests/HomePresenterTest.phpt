@@ -2,11 +2,10 @@
 /**
  * Class HomePresenterTest
  *
- * @testcase \Flame\Tester\Example\HomePresenterTest
  * @author: Jiří Šifalda <sifalda.jiri@gmail.com>
  * @date: 14.05.13
  */
-namespace Flame\Tester\Example;
+namespace Flame\Tester\Tests;
 
 use Flame\Tester\SeleniumTestCase;
 use Flame\WebDriver\Element;
