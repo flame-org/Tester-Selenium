@@ -16,9 +16,11 @@ $container = require __DIR__ . '/bootstrap.php';
 class HomePresenterTest extends TestCase
 {
 
+	protected $testingUrl = 'www.jsifalda.name';
+
 	public function testName()
 	{
-		$this->browserCase->open('http://jsifalda.name');
+		$this->browserCase->open('/');
 		Assert::equal(
 			'Jiří Šifalda',
 			$this->browserCase->findElementBy(Element::CLASS_NAME, 'nine')
@@ -29,14 +31,14 @@ class HomePresenterTest extends TestCase
 
 	public function testAboutMe()
 	{
-		$this->browserCase->open('http://jsifalda.name');
+		$this->browserCase->open();
 
 		Assert::equal('Freelance Web Developer', $this->browserCase->findElementBy(Element::CLASS_NAME, 'subhead')->text());
 	}
 
 	public function testTitle()
 	{
-		$this->browserCase->open('http://jsifalda.name');
+		$this->browserCase->open();
 
 		$titleElement = $this->browserCase->findElementBy(Element::TAG_NAME, 'title');
 		Assert::equal('Jiří Šifalda - Freelance Web Developer', $titleElement->text());
@@ -44,7 +46,7 @@ class HomePresenterTest extends TestCase
 
 	public function testClickRedirect()
 	{
-		$this->browserCase->open('http://jsifalda.name');
+		$this->browserCase->open();
 
 		$this->browserCase->findElementBy(Element::LINK_TEXT, 'Github')->click();
 		$this->browserCase->getSession()->focusWindow($this->browserCase->getSession()->getWindow(1));

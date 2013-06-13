@@ -9,25 +9,30 @@ namespace Flame\Tester\Selenium\Browser;
 
 use Flame\Tester\Selenium\InvalidArgumentException;
 use Flame\Tester\Selenium\InvalidStateException;
+use Flame\Tester\Selenium\Types\Url;
 use Flame\WebDriver\Driver;
 use Flame\WebDriver\Session;
-use Nette\Object;
 
-class BrowserCase extends Object
+class BrowserCase extends BaseCase
 {
 
 	/** @var \Flame\WebDriver\Driver  */
 	private $webDriver;
 
-	/** @var  Session */
+	/** @var  \Flame\WebDriver\Session */
 	private $session;
 
+	/** @var \Flame\Tester\Selenium\Browser\Configurator  */
+	private $config;
+
 	/**
-	 * @param Driver $driver
+	 * @param Driver       $driver
+	 * @param Configurator $config
 	 */
-	public function __construct(Driver $driver)
+	public function __construct(Driver $driver, Configurator $config)
 	{
 		$this->webDriver = $driver;
+		$this->config = $config;
 	}
 
 	/**
@@ -37,21 +42,13 @@ class BrowserCase extends Object
 	 */
 	public function createSession($browserName = 'firefox')
 	{
-		$types = $this->getBrowserTypes();
+		$types = $this->createTypes();
 		if($types->isAvailable($browserName)) {
 			$this->session = $this->webDriver->createSession($browserName);
 			return $this;
 		}
 
 		throw new InvalidArgumentException('Browser "' . $browserName . '" is not support by Selenium');
-	}
-
-	/**
-	 * @return Types
-	 */
-	public function getBrowserTypes()
-	{
-		return new Types;
 	}
 
 	/**
@@ -107,9 +104,20 @@ class BrowserCase extends Object
 	 * @param $url
 	 * @return $this
 	 */
-	public function open($url)
+	public function open($url = null)
 	{
+		$url = (string) $this->config->getTestingUrl() . (($url) ? $url : '');
 		$this->session = $this->getSession()->open($url);
+		return $this;
+	}
+
+	/**
+	 * @param $url
+	 * @return $this
+	 */
+	public function setTestingUrl($url)
+	{
+		$this->config->setTestingUrl($this->createUrl($url));
 		return $this;
 	}
 }

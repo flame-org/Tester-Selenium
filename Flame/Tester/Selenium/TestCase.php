@@ -9,10 +9,15 @@
 namespace Flame\Tester\Selenium;
 
 use Flame\Tester\Selenium\Browser\BrowserCase;
+use Flame\Tester\Selenium\Browser\Configurator;
+use Flame\Tester\Selenium\Types\Url;
 use Flame\WebDriver\Driver;
 
 class TestCase extends \Tester\TestCase
 {
+
+	/** @var  string */
+	protected $testingUrl;
 
 	/** @var  BrowserCase */
 	protected $browserCase;
@@ -20,22 +25,6 @@ class TestCase extends \Tester\TestCase
 	public function setUp()
 	{
 		$this->browserCase = $this->createBrowserCase()->createSession();
-	}
-
-	/**
-	 * @param $url
-	 * @return $this
-	 */
-	public function setTestingUrl($url)
-	{
-		$url = (string) $url;
-
-		if(substr($url,0, 7) != 'http://' && substr($url, 0, 8) != 'https://') {
-			$url = 'http://' . $url;
-		}
-
-		$this->properties['url'] = $url;
-		return $this;
 	}
 
 	public function tearDown()
@@ -46,10 +35,20 @@ class TestCase extends \Tester\TestCase
 	}
 
 	/**
+	 * @return Configurator
+	 */
+	protected function createConfig()
+	{
+		$config = new Configurator();
+		$config->setTestingUrl(new Url($this->testingUrl));
+		return $config;
+	}
+
+	/**
 	 * @return BrowserCase
 	 */
-	protected function createBrowserCase()
+	private function createBrowserCase()
 	{
-		return new BrowserCase(new Driver);
+		return new BrowserCase(new Driver, $this->createConfig());
 	}
 }
