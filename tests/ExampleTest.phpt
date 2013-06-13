@@ -1,11 +1,12 @@
 <?php
 /**
- * Class HomePresenterTest
+ * Class ExampleTest
  *
  * @author: Jiří Šifalda <sifalda.jiri@gmail.com>
  * @date: 14.05.13
  */
-namespace Flame\Tester\Tests;
+
+namespace Flame\Tester\Selenium\Tests;
 
 use Flame\Tester\Selenium\TestCase;
 use Flame\WebDriver\Element;
@@ -13,7 +14,7 @@ use Tester\Assert;
 
 $container = require __DIR__ . '/bootstrap.php';
 
-class HomePresenterTest extends TestCase
+class ExampleTest extends TestCase
 {
 
 	/** @var string */
@@ -57,4 +58,4 @@ class HomePresenterTest extends TestCase
 
 }
 
-id(new HomePresenterTest)->run();
+id(new ExampleTest)->run();

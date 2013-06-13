@@ -13,7 +13,7 @@ use Flame\Tester\Selenium\Browser\Configurator;
 use Flame\Tester\Selenium\Types\Url;
 use Flame\WebDriver\Driver;
 
-class ExampleTest extends \Tester\TestCase
+class TestCase extends \Tester\TestCase
 {
 
 	/** @var  string */
