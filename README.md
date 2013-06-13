@@ -4,50 +4,7 @@ Nette/Tester selenium 2 extension
 The simple way for support of testing with Selenium 2 on nette/tester
 
 ##Example
-
-```php
-
-class HomePresenterTest extends TestCase
-{
-
-	public function testName()
-    {
-        $this->browserCase->open('http://jsifalda.name');
-        Assert::equal(
-            'Jiří Šifalda',
-            $this->browserCase->findElementBy(Element::CLASS_NAME, 'nine')
-                ->element(Element::TAG_NAME, 'h1')
-                ->text()
-        );
-    }
-
-    public function testAboutMe()
-    {
-        $this->browserCase->open('http://jsifalda.name');
-
-        Assert::equal('Freelance Web Developer', $this->browserCase->findElementBy(Element::CLASS_NAME, 'subhead')->text());
-    }
-
-    public function testTitle()
-    {
-        $this->browserCase->open('http://jsifalda.name');
-
-        $titleElement = $this->browserCase->findElementBy(Element::TAG_NAME, 'title');
-        Assert::equal('Jiří Šifalda - Freelance Web Developer', $titleElement->text());
-    }
-
-    public function testClickRedirect()
-    {
-        $this->browserCase->open('http://jsifalda.name');
-
-        $this->browserCase->findElementBy(Element::LINK_TEXT, 'Github')->click();
-        $this->browserCase->getSession()->focusWindow($this->browserCase->getSession()->getWindow(1));
-        Assert::equal('https://github.com/jsifalda', $this->browserCase->getCurrentUrl());
-    }
-
-}
-
-```
+Look at this [example file](https://github.com/flame-org/Tester-Selenium/blob/master/tests/ExampleTest.phpt)
 
 ##Instalation
 1. Add `flame/tester-selenium` in your dev-dependencies
