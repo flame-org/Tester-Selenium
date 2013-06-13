@@ -16,11 +16,13 @@ $container = require __DIR__ . '/bootstrap.php';
 class HomePresenterTest extends TestCase
 {
 
+	/** @var string */
 	protected $testingUrl = 'www.jsifalda.name';
 
 	public function testName()
 	{
 		$this->browserCase->open('/');
+
 		Assert::equal(
 			'Jiří Šifalda',
 			$this->browserCase->findElementBy(Element::CLASS_NAME, 'nine')
