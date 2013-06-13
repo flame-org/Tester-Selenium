@@ -15,7 +15,7 @@ Look at this [example file](https://github.com/flame-org/Tester-Selenium/blob/ma
 5. Run your tests
 
 #### How to run exmaple selenium tests?
-`php libs/bin/tester example/`
+`php libs/bin/tester tests/`
 
 ###Requirements
 * [nette/tester](https://github.com/nette/tester)
