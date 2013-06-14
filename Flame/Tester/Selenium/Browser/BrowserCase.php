@@ -95,7 +95,7 @@ class BrowserCase extends BaseCase
 	 * @param $name
 	 * @return null|\PHPWebDriver_WebDriverElement
 	 */
-	public function findElementBy($selector, $name)
+	public function element($selector, $name)
 	{
 		return $this->getSession()->element($selector, $name);
 	}

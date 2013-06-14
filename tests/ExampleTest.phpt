@@ -26,7 +26,7 @@ class ExampleTest extends TestCase
 
 		Assert::equal(
 			'Jiří Šifalda',
-			$this->browserCase->findElementBy(Element::CLASS_NAME, 'nine')
+			$this->browserCase->element(Element::CLASS_NAME, 'nine')
 				->element(Element::TAG_NAME, 'h1')
 				->text()
 		);
@@ -36,14 +36,14 @@ class ExampleTest extends TestCase
 	{
 		$this->browserCase->open();
 
-		Assert::equal('Freelance Web Developer', $this->browserCase->findElementBy(Element::CLASS_NAME, 'subhead')->text());
+		Assert::equal('Freelance Web Developer', $this->browserCase->element(Element::CLASS_NAME, 'subhead')->text());
 	}
 
 	public function testTitle()
 	{
 		$this->browserCase->open();
 
-		$titleElement = $this->browserCase->findElementBy(Element::TAG_NAME, 'title');
+		$titleElement = $this->browserCase->element(Element::TAG_NAME, 'title');
 		Assert::equal('Jiří Šifalda - Freelance Web Developer', $titleElement->text());
 	}
 
@@ -51,7 +51,7 @@ class ExampleTest extends TestCase
 	{
 		$this->browserCase->open();
 
-		$this->browserCase->findElementBy(Element::LINK_TEXT, 'Github')->click();
+		$this->browserCase->element(Element::LINK_TEXT, 'Github')->click();
 		$this->browserCase->getSession()->focusWindow($this->browserCase->getSession()->getWindow(1));
 		Assert::equal('https://github.com/jsifalda', $this->browserCase->getCurrentUrl());
 	}
