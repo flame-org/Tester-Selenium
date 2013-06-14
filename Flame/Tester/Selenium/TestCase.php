@@ -39,9 +39,7 @@ class TestCase extends \Tester\TestCase
 	 */
 	protected function createConfig()
 	{
-		$config = new Configurator();
-		$config->setTestingUrl(new Url($this->testingUrl));
-		return $config;
+		return new Configurator(array('testingUrl' => new Url($this->testingUrl)));
 	}
 
 	/**
