@@ -51,10 +51,17 @@ class Configurator extends Object
 
 	/**
 	 * @return Url
+	 * @throws \Flame\Tester\Selenium\InvalidStateException
 	 */
 	public function getTestingUrl()
 	{
-		return $this->get(Settings::TESTING_URL);
+		$url = $this->get(Settings::TESTING_URL);
+
+		if($url instanceof Url) {
+			return $url;
+		}else{
+			throw new InvalidStateException('Testing url must be instance of Flame\Tester\Selenium\Types\Url. Given ' . gettype($url));
+		}
 	}
 
 	/**
