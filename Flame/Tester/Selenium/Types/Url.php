@@ -18,7 +18,6 @@ class Url extends Object
 
 	/**
 	 * @param $url
-	 * @throws InvalidArgumentException
 	 */
 	public function __construct($url)
 	{

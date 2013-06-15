@@ -8,10 +8,9 @@
 
 namespace Flame\Tester\Selenium;
 
-use Flame\Tester\Selenium\Browser\BrowserCase;
-use Flame\Tester\Selenium\Browser\Configurator;
 use Flame\Tester\Selenium\Types\Url;
 use Flame\WebDriver\Driver;
+use Flame\WebDriverCapabilityType;
 
 class TestCase extends \Tester\TestCase
 {
@@ -19,34 +18,41 @@ class TestCase extends \Tester\TestCase
 	/** @var  string */
 	protected $testingUrl;
 
-	/** @var  BrowserCase */
-	protected $browserCase;
+	/** @var  string */
+	protected $browser = 'firefox';
+
+	/** @var  \Flame\WebDriver\Driver */
+	protected $driver;
 
 	public function setUp()
 	{
-		$this->browserCase = $this->createBrowserCase()->createSession();
+		$this->driver = $this->createDriver();
 	}
 
 	public function tearDown()
 	{
-		if($this->browserCase instanceof BrowserCase) {
-			$this->browserCase->closeSession();
+		if($this->driver instanceof Driver) {
+			$this->driver->quit();
 		}
 	}
 
 	/**
-	 * @return Configurator
+	 * @param null $url
 	 */
-	protected function createConfig()
+	public function open($url = null)
 	{
-		return new Configurator(array('testingUrl' => new Url($this->testingUrl)));
+		$url = (string) new Url($this->testingUrl) . (($url) ? $url : '');
+		$this->driver->get($url);
 	}
 
 	/**
-	 * @return BrowserCase
+	 * @return Driver
 	 */
-	private function createBrowserCase()
+	protected function createDriver()
 	{
-		return new BrowserCase(new Driver, $this->createConfig());
+		$capabilities = array(
+			WebDriverCapabilityType::BROWSER_NAME => $this->browser
+		);
+		return new Driver(Driver::SERVER_URL, $capabilities);
 	}
 }

@@ -7,44 +7,36 @@
  */
 namespace Flame\WebDriver;
 
-class Driver extends \PHPWebDriver_WebDriverBase
+use Flame\WebDriver;
+use Flame\Tester\Selenium\InvalidArgumentException;
+
+class Driver extends WebDriver
 {
 
 	const SERVER_URL = 'http://localhost:4444/wd/hub';
 
 	/**
 	 * @param string $executor
+	 * @param array  $desired_capabilities
 	 */
-	public function __construct($executor = self::SERVER_URL)
+	public function __construct($executor = self::SERVER_URL, array $desired_capabilities = array())
 	{
-		parent::__construct($executor);
+		parent::__construct($executor, $desired_capabilities);
 	}
 
 	/**
-	 * @param string $broswerName
-	 * @return Session
+	 * @param $index
+	 * @return mixed
+	 * @throws \Flame\Tester\Selenium\InvalidArgumentException
 	 */
-	public function createSession($broswerName)
+	public function getWindow($index)
 	{
-		$capabilities = new \PHPWebDriver_WebDriverDesiredCapabilities;
-		$curl_opts = array(CURLOPT_FOLLOWLOCATION => true);
-		$results = $this->curl(
-			'POST',
-			'/session',
-			array('desiredCapabilities' => $capabilities->$broswerName),
-			$curl_opts
-		);
+		$windows = $this->getWindowHandles();
 
-		return new Session($results['info']['url']);
-	}
+		if(isset($windows[$index])) {
+			return $windows[$index];
+		}
 
-	/**
-	 * @return array
-	 */
-	protected function methods()
-	{
-		return array(
-			'status' => 'GET',
-		);
+		throw new InvalidArgumentException('Window with index "' . $index . '" is not opened!');
 	}
 }
