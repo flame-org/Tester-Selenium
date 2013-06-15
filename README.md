@@ -19,9 +19,9 @@ Look at this [example file](https://github.com/flame-org/Tester-Selenium/blob/ma
 
 ###Requirements
 * [nette/tester](https://github.com/nette/tester)
-* [element-34/php-webdriver](https://github.com/Element-34/php-webdriver)
+* [flame/php-webdriver](https://github.com/flame-org/PHP-WebDriver)
 * [nette/nette](https://github.com/nette/nette) - For running example tests only
 
-**For more information please visit documentation of [php webdriver](https://github.com/Element-34/php-webdriver).**
+#### More information
 
-**There are [more examples](https://github.com/facebook/php-webdriver/wiki/Example-command-reference) for working with webdriver session**
+Check out the Selenium docs and wiki at http://docs.seleniumhq.org/docs/ and https://code.google.com/p/selenium/wiki
