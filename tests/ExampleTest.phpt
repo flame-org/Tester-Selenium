@@ -19,7 +19,7 @@ class ExampleTest extends TestCase
 {
 
 	/** @var string */
-	protected $testingUrl = 'www.jsifalda.name';
+	protected $testingUrl = 'jsifalda.name';
 
 	public function testName()
 	{

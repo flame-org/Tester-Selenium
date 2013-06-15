@@ -30,8 +30,7 @@ class Url extends Object
 	 */
 	public function append($value)
 	{
-		$value = (string) (is_array($value) ? http_build_query($value, '', '&') : $value);
-		$this->url .= ($this->url === '' || $value === '') ? $value : '&' . $value;
+		$this->url .= $value;
 		return $this;
 	}
 
