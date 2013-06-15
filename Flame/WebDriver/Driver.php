@@ -24,7 +24,7 @@ class Driver extends \PHPWebDriver_WebDriverBase
 	 * @param string $broswerName
 	 * @return Session
 	 */
-	public function createSession($broswerName = 'firefox')
+	public function createSession($broswerName)
 	{
 		$capabilities = new \PHPWebDriver_WebDriverDesiredCapabilities;
 		$curl_opts = array(CURLOPT_FOLLOWLOCATION => true);
