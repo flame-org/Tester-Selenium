@@ -7,10 +7,8 @@
  */
 namespace Flame\WebDriver;
 
-use Flame\NoSuchElementWebDriverError;
 use Flame\WebDriver;
 use Flame\Tester\Selenium\InvalidArgumentException;
-use Flame\WebDriverBy;
 
 class Driver extends WebDriver
 {
@@ -24,20 +22,6 @@ class Driver extends WebDriver
 	public function __construct($executor = self::SERVER_URL, array $desired_capabilities = array())
 	{
 		parent::__construct($executor, $desired_capabilities);
-	}
-
-	/**
-	 * @param WebDriverBy $by
-	 * @return bool
-	 */
-	public function hasElement(WebDriverBy $by)
-	{
-		try {
-			$this->findElement($by);
-			return true;
-		}catch (NoSuchElementWebDriverError $ex) {}
-
-		return false;
 	}
 
 	/**
