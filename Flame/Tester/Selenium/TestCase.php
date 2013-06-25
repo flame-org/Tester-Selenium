@@ -12,6 +12,7 @@ use Flame\Tester\Selenium\Types\Url;
 use Flame\WebDriver\Driver;
 use Flame\WebDriverBrowserType;
 use Flame\WebDriverCapabilityType;
+use Flame\WebDriverWait;
 
 class TestCase extends \Tester\TestCase
 {
@@ -25,16 +26,42 @@ class TestCase extends \Tester\TestCase
 	/** @var  \Flame\WebDriver\Driver */
 	protected $driver;
 
+	/**
+	 * @return void
+	 */
 	public function setUp()
 	{
 		$this->driver = $this->createDriver();
 	}
 
+	/**
+	 * @return void
+	 */
 	public function tearDown()
 	{
 		if($this->driver instanceof Driver) {
 			$this->driver->quit();
 		}
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isAjaxInProgress()
+	{
+		return !$this->driver->executeScript('return jQuery.active == 0');
+	}
+
+	/**
+	 * @return void
+	 */
+	public function waitForAjax()
+	{
+		$wait = new WebDriverWait($this->driver);
+		$wait->until(function($driver) {
+			/** @var \Flame\WebDriver $driver */
+			return !$driver->executeScript('return jQuery.active == 0');
+		});
 	}
 
 	/**
