@@ -10,6 +10,7 @@ namespace Flame\Tester\Selenium;
 
 use Flame\Tester\Selenium\Types\Url;
 use Flame\WebDriver\Driver;
+use Flame\WebDriverBrowserType;
 use Flame\WebDriverCapabilityType;
 
 class TestCase extends \Tester\TestCase
@@ -19,7 +20,7 @@ class TestCase extends \Tester\TestCase
 	protected $testingUrl;
 
 	/** @var  string */
-	protected $browser = 'firefox';
+	protected $browser = WebDriverBrowserType::FIREFOX;
 
 	/** @var  \Flame\WebDriver\Driver */
 	protected $driver;
