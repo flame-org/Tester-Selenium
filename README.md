@@ -1,10 +1,10 @@
 Nette/Tester selenium 2 extension
 ===============
 
-The simple way for support of testing with Selenium 2 on nette/tester
+The simple way for testing with Selenium 2 and Nette/Tester
 
 ##Example
-Look at this [example file](https://github.com/flame-org/Tester-Selenium/blob/master/tests/ExampleTest.phpt)
+Look at this [example test](https://github.com/flame-org/Tester-Selenium/blob/master/tests/ExampleTest.phpt)
 
 ##Instalation
 1. Add `flame/tester-selenium` in your dev-dependencies
@@ -19,7 +19,7 @@ Look at this [example file](https://github.com/flame-org/Tester-Selenium/blob/ma
 
 ###Requirements
 * [nette/tester](https://github.com/nette/tester)
-* [flame/php-webdriver](https://github.com/flame-org/PHP-WebDriver)
+* [facebook/php-webdriver](https://github.com/facebook/php-webdriver)
 * [nette/nette](https://github.com/nette/nette) - For running example tests only
 
 #### More information
