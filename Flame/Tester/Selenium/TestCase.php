@@ -74,6 +74,19 @@ class TestCase extends \Tester\TestCase
 	}
 
 	/**
+	 * @param \WebDriverBy $by
+	 * @return bool
+	 */
+	public function existElement(\WebDriverBy $by)
+	{
+		try {
+			return (bool) count($this->driver->findElements($by));
+		}catch (\NoSuchElementWebDriverError $ex) {
+			return false;
+		}
+	}
+
+	/**
 	 * @return Driver
 	 */
 	protected function createDriver()
