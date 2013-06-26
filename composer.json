@@ -23,18 +23,38 @@
         "vendor-dir": "libs"
     },
 
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "facebook/php-webdriver",
+                "version": "dev-master",
+                "dist": {
+                    "url": "https://github.com/facebook/php-webdriver/archive/master.zip",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "git://github.com/facebook/php-webdriver.git",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        }
+    ],
+
     "require": {
         "php": ">= 5.3.0",
         "nette/tester": ">=0.9.0",
-        "flame/php-webdriver": "dev-master"
+        "facebook/php-webdriver": "dev-master"
     },
 
     "require-dev": {
-        "nette/nette": "2.0.*"
+        "nette/nette": ">=2.0.8"
     },
 
     "autoload": {
         "psr-0": {"Flame": ""},
+        "files": ["libs/facebook/php-webdriver/__init__.php"],
         "classmap": [
             "Flame/Tester/Selenium/exceptions.php"
         ]

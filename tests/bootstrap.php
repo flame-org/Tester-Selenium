@@ -7,12 +7,13 @@ if (!class_exists('Tester\Assert')) {
 	exit(1);
 }
 
-function id($val) {
+function id($val)
+{
 	return $val;
 }
 
 $configurator = new \Nette\Config\Configurator;
-$configurator->setDebugMode(FALSE);
+$configurator->setDebugMode(false);
 $configurator->setTempDirectory(__DIR__ . '/../temp');
 $configurator->createRobotLoader()
 	->addDirectory(__DIR__)

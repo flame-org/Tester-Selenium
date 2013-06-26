@@ -21,7 +21,7 @@ class Url extends Object
 	 */
 	public function __construct($url)
 	{
-		$this->url = (string) $url;
+		$this->url = (string)$url;
 	}
 
 	/**
@@ -39,8 +39,8 @@ class Url extends Object
 	 */
 	public function validate()
 	{
-		$url = (string) $this->url;
-		if(substr($url,0, 7) != 'http://' && substr($url, 0, 8) != 'https://') {
+		$url = (string)$this->url;
+		if (substr($url, 0, 7) != 'http://' && substr($url, 0, 8) != 'https://') {
 			$url = 'http://' . $url;
 		}
 
@@ -54,7 +54,7 @@ class Url extends Object
 	 */
 	public function getUrl($valid = true)
 	{
-		if($valid == true) {
+		if ($valid == true) {
 			$this->validate();
 		}
 
@@ -66,6 +66,6 @@ class Url extends Object
 	 */
 	public function __toString()
 	{
-		return (string) $this->getUrl();
+		return (string)$this->getUrl();
 	}
 }

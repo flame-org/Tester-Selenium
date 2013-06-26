@@ -10,9 +10,8 @@ namespace Flame\Tester\Selenium;
 
 use Flame\Tester\Selenium\Types\Url;
 use Flame\WebDriver\Driver;
-use Flame\WebDriverBrowserType;
-use Flame\WebDriverCapabilityType;
-use Flame\WebDriverWait;
+use WebDriverBrowserType;
+use WebDriverWait;
 
 class TestCase extends \Tester\TestCase
 {
@@ -39,7 +38,7 @@ class TestCase extends \Tester\TestCase
 	 */
 	public function tearDown()
 	{
-		if($this->driver instanceof Driver) {
+		if ($this->driver instanceof Driver) {
 			$this->driver->quit();
 		}
 	}
@@ -59,7 +58,7 @@ class TestCase extends \Tester\TestCase
 	{
 		$wait = new WebDriverWait($this->driver);
 		$wait->until(function($driver) {
-			/** @var \Flame\WebDriver $driver */
+			/** @var \WebDriver $driver */
 			return !$driver->executeScript('return jQuery.active == 0');
 		});
 	}
@@ -80,7 +79,7 @@ class TestCase extends \Tester\TestCase
 	protected function createDriver()
 	{
 		$capabilities = array(
-			WebDriverCapabilityType::BROWSER_NAME => $this->browser
+			\WebDriverCapabilityType::BROWSER_NAME => $this->browser
 		);
 		return new Driver(Driver::SERVER_URL, $capabilities);
 	}

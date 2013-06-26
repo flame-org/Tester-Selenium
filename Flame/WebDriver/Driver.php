@@ -7,17 +7,16 @@
  */
 namespace Flame\WebDriver;
 
-use Flame\WebDriver;
 use Flame\Tester\Selenium\InvalidArgumentException;
 
-class Driver extends WebDriver
+class Driver extends \WebDriver
 {
 
 	const SERVER_URL = 'http://localhost:4444/wd/hub';
 
 	/**
 	 * @param string $executor
-	 * @param array  $desired_capabilities
+	 * @param array $desired_capabilities
 	 */
 	public function __construct($executor = self::SERVER_URL, array $desired_capabilities = array())
 	{
@@ -33,7 +32,7 @@ class Driver extends WebDriver
 	{
 		$windows = $this->getWindowHandles();
 
-		if(isset($windows[$index])) {
+		if (isset($windows[$index])) {
 			return $windows[$index];
 		}
 

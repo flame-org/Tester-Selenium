@@ -4,6 +4,7 @@ namespace Flame\Tester\Selenium;
 
 class InvalidStateException extends \RuntimeException
 {
+
 }
 
 /**
@@ -11,6 +12,7 @@ class InvalidStateException extends \RuntimeException
  */
 class InvalidArgumentException extends \InvalidArgumentException
 {
+
 }
 
 /**
@@ -18,4 +20,5 @@ class InvalidArgumentException extends \InvalidArgumentException
  */
 class StaticClassException extends \LogicException
 {
+
 }

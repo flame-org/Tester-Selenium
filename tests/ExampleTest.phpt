@@ -10,8 +10,8 @@ namespace Flame\Tester\Selenium\Tests;
 
 
 use Flame\Tester\Selenium\TestCase;
-use Flame\WebDriverBy;
 use Tester\Assert;
+use WebDriverBy;
 
 $container = require __DIR__ . '/bootstrap.php';
 
@@ -28,8 +28,8 @@ class ExampleTest extends TestCase
 		Assert::equal(
 			'Jiří Šifalda',
 			$this->driver->findElement(WebDriverBy::className('nine'))
-			->findElement(WebDriverBy::tagName('h1'))
-			->getText()
+				->findElement(WebDriverBy::tagName('h1'))
+				->getText()
 		);
 	}
 
@@ -47,16 +47,6 @@ class ExampleTest extends TestCase
 		Assert::equal('Jiří Šifalda - Freelance Web Developer', $this->driver->getTitle());
 	}
 
-	public function testClickRedirect()
-	{
-		$this->open();
-
-		$this->driver->findElement(WebDriverBy::linkText('Github'))->click();
-		$this->driver->focusWindow($this->driver->getWindow(1));
-
-		Assert::equal('https://github.com/jsifalda', $this->driver->getCurrentURL());
-	}
-
 }
 
-id(new ExampleTest)->run();
+id(new ExampleTest($container))->run();
