@@ -54,7 +54,6 @@
 
     "autoload": {
         "psr-0": {"Flame": ""},
-        "files": ["libs/facebook/php-webdriver/__init__.php"],
         "classmap": [
             "Flame/Tester/Selenium/exceptions.php"
         ]
