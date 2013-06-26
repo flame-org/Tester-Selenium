@@ -19,7 +19,7 @@ class ExampleTest extends TestCase
 {
 
 	/** @var string */
-	protected $testingUrl = 'jsifalda.name';
+	protected $testingUrl = /*http://www.*/'jsifalda.name';
 
 	public function testName()
 	{
@@ -37,7 +37,9 @@ class ExampleTest extends TestCase
 	{
 		$this->open();
 
-		Assert::equal('Freelance Web Developer', $this->driver->findElement(WebDriverBy::className('subhead'))->getText());
+		Assert::equal('Freelance Web Developer', $this->driver
+			->findElement(WebDriverBy::className('subhead'))
+			->getText());
 	}
 
 	public function testTitle()
@@ -45,6 +47,39 @@ class ExampleTest extends TestCase
 		$this->open();
 
 		Assert::equal('Jiří Šifalda - Freelance Web Developer', $this->driver->getTitle());
+	}
+
+	public function testAttribute()
+	{
+		$this->open();
+
+		Assert::same('Jiří Šifalda (JSifalda)', $this->driver
+			->findElement(WebDriverBy::xpath('/html/body/div/div[1]/div[1]/img'))
+			->getAttribute('alt'));
+	}
+
+	public function testFindNotExistingElement()
+	{
+		$this->open();
+
+		//This way is bad a idea! Throwing exception in driver
+//		Assert::throws(function () {
+//			$this->driver->findElement(WebDriverBy::id('very-bad-id'));
+//		}, '\NoSuchElementWebDriverError');
+
+		//For now correct way
+		Assert::false($this->existElement(WebDriverBy::id('very-bad-id')));
+	}
+
+	public function testClickToLink()
+	{
+		$this->open();
+
+		$this->driver
+			->findElement(WebDriverBy::linkText('Symb.me'))
+			->click();
+
+		Assert::contains('symb.me', $this->driver->getCurrentURL());
 	}
 
 }
