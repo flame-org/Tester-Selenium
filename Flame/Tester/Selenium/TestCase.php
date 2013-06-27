@@ -64,22 +64,14 @@ class TestCase extends \Tester\TestCase
 	}
 
 	/**
-	 * @return bool
-	 */
-	public function isAjaxInProgress()
-	{
-		return $this->driver->executeScript('return jQuery.active == 0');
-	}
-
-	/**
 	 * @return void
 	 */
 	public function waitForAjax()
 	{
 		$wait = new WebDriverWait($this->driver);
 		$wait->until(function($driver) {
-			/** @var \WebDriver $driver */
-			return $driver->executeScript('return jQuery.active == 0');
+			/** @var \Flame\WebDriver\Driver $driver */
+			return $driver->isAjaxInProgress();
 		});
 	}
 

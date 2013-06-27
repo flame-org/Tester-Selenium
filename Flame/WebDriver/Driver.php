@@ -24,6 +24,14 @@ class Driver extends \WebDriver
 	}
 
 	/**
+	 * @return bool
+	 */
+	public function isAjaxInProgress()
+	{
+		return (bool) $this->executeScript('return jQuery.active == 0');
+	}
+
+	/**
 	 * @param $index
 	 * @return mixed
 	 * @throws \Flame\Tester\Selenium\InvalidArgumentException
