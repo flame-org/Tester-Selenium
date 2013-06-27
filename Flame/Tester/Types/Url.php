@@ -44,7 +44,7 @@ class Url
 	public function validate()
 	{
 		$url = (string)$this->url;
-		if (Strings::startsWith($url, 'http://') && Strings::startsWith($url, 'https://')) {
+		if (!Strings::startsWith($url, 'http://') && !Strings::startsWith($url, 'https://')) {
 			$url = 'http://' . $url;
 		}
 
