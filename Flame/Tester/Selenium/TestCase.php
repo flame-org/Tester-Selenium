@@ -77,12 +77,15 @@ class TestCase extends \Tester\TestCase
 
 	/**
 	 * @param null $url
+	 * @return string
 	 */
 	public function open($url = null)
 	{
 		$urlS = new Url($this->testingUrl);
 		$urlS->append($url);
-		$this->driver->get((string) $urlS);
+		$url = $urlS->getUrl();
+		$this->driver->get($url);
+		return $url;
 	}
 
 	/**
