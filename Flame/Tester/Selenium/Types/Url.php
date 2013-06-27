@@ -8,6 +8,7 @@
 namespace Flame\Tester\Selenium\Types;
 
 use Flame\Tester\Selenium\InvalidArgumentException;
+use Flame\Utils\Strings;
 use Nette\Object;
 
 class Url extends Object
@@ -30,7 +31,12 @@ class Url extends Object
 	 */
 	public function append($value)
 	{
-		$this->url .= $value;
+		if(Strings::endsWith($this->url, '/') || Strings::startsWith($value, '/')) {
+			$this->url .= $value;
+		}else{
+			$this->url .= '/' . $value;
+		}
+
 		return $this;
 	}
 
