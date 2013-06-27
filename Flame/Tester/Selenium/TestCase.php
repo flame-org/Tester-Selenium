@@ -48,7 +48,7 @@ class TestCase extends \Tester\TestCase
 	 */
 	public function isAjaxInProgress()
 	{
-		return !$this->driver->executeScript('return jQuery.active == 0');
+		return $this->driver->executeScript('return jQuery.active == 0');
 	}
 
 	/**
@@ -59,7 +59,7 @@ class TestCase extends \Tester\TestCase
 		$wait = new WebDriverWait($this->driver);
 		$wait->until(function($driver) {
 			/** @var \WebDriver $driver */
-			return !$driver->executeScript('return jQuery.active == 0');
+			return $driver->executeScript('return jQuery.active == 0');
 		});
 	}
 
