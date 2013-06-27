@@ -5,13 +5,11 @@
  * @author: Jiří Šifalda <sifalda.jiri@gmail.com>
  * @date: 12.06.13
  */
-namespace Flame\Tester\Selenium\Types;
+namespace Flame\Tester\Types;
 
-use Flame\Tester\Selenium\InvalidArgumentException;
-use Flame\Utils\Strings;
-use Nette\Object;
+use Flame\Tester\Utils\Strings;
 
-class Url extends Object
+class Url
 {
 
 	/** @var  string */
@@ -46,7 +44,7 @@ class Url extends Object
 	public function validate()
 	{
 		$url = (string)$this->url;
-		if (substr($url, 0, 7) != 'http://' && substr($url, 0, 8) != 'https://') {
+		if (Strings::startsWith($url, 'http://') && Strings::startsWith($url, 'https://')) {
 			$url = 'http://' . $url;
 		}
 

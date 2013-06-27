@@ -8,7 +8,7 @@
 
 namespace Flame\Tester\Selenium;
 
-use Flame\Tester\Selenium\Types\Url;
+use Flame\Tester\Types\Url;
 use Flame\WebDriver\Driver;
 use WebDriverBrowserType;
 use WebDriverWait;
