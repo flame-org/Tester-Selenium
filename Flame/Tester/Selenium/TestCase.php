@@ -44,6 +44,26 @@ class TestCase extends \Tester\TestCase
 	}
 
 	/**
+	 * @param $fragment
+	 * @param bool $append
+	 * @return bool
+	 */
+	public function isUrlFragment($fragment, $append = true)
+	{
+		if($append === true) {
+			$url = new Url($this->testingUrl);
+			$url->append($fragment);
+			$fragment = $url->getUrl();
+		}
+
+		if(strpos($this->driver->getCurrentURL(), $fragment) === false) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
 	 * @return bool
 	 */
 	public function isAjaxInProgress()
