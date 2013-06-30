@@ -18,7 +18,7 @@ class TestCase extends \Tester\TestCase
 	protected $testingUrl;
 
 	/** @var  string */
-	protected $browser = WebDriverBrowserType::FIREFOX;
+	protected $browser = WebDriverBrowserType::CHROME;
 
 	/** @var  \Flame\WebDriver\Driver */
 	protected $driver;
