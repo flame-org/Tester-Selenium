@@ -53,20 +53,4 @@ class Driver extends \WebDriver
 	{
 		return (bool) count($this->findElements($by));
 	}
-
-	/**
-	 * @param $index
-	 * @return mixed
-	 * @throws \Flame\Tester\Selenium\InvalidArgumentException
-	 */
-	public function getWindow($index)
-	{
-		$windows = $this->getWindowHandles();
-
-		if (isset($windows[$index])) {
-			return $windows[$index];
-		}
-
-		throw new InvalidArgumentException('Window with index "' . $index . '" is not opened!');
-	}
 }
