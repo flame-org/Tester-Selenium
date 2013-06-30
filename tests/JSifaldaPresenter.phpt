@@ -1,13 +1,13 @@
 <?php
 /**
- * Class ExampleTest
+ * Class JSifaldaPresenterTest
  *
- * @testCase \Flame\Tester\Selenium\Tests\ExampleTest
+ * @testCase Flame\Tests\Tester\Selenium\JSifaldaPresenterTest
  * @author: Jiří Šifalda <sifalda.jiri@gmail.com>
  * @date: 14.05.13
  */
 
-namespace Flame\Tester\Selenium\Tests;
+namespace Flame\Tests\Tester\Selenium;
 
 
 use Flame\Tester\Selenium\TestCase;
@@ -16,7 +16,7 @@ use WebDriverBy;
 
 require __DIR__ . '/bootstrap.php';
 
-class ExampleTest extends TestCase
+class JSifaldaPresenterTest extends TestCase
 {
 
 	/** @var string */
@@ -85,4 +85,4 @@ class ExampleTest extends TestCase
 
 }
 
-run(new ExampleTest());
+run(new JSifaldaPresenterTest());

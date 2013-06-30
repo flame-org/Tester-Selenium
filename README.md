@@ -3,8 +3,8 @@ Nette/Tester selenium 2 extension
 
 The simple way for testing with Selenium 2 and Nette/Tester
 
-##Example
-Look at this [example test](https://github.com/flame-org/Tester-Selenium/blob/master/tests/ExampleTest.phpt)
+##Example tests
+Look at [tests folder](https://github.com/flame-org/Tester-Selenium/tree/master/tests)
 
 ##Instalation
 1. Add `flame/tester-selenium` in your dev-dependencies
