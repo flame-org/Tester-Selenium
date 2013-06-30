@@ -47,7 +47,7 @@ class Driver extends \WebDriver
 	}
 
 	/**
-	 * @return void
+	 * @return $this
 	 */
 	public function waitForAjax()
 	{
@@ -56,6 +56,8 @@ class Driver extends \WebDriver
 			/** @var \Flame\WebDriver\Driver $driver */
 			return $driver->isAjaxInProgress();
 		});
+
+		return $this;
 	}
 
 	/**
