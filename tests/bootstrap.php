@@ -8,9 +8,20 @@ if (!class_exists('Tester\Assert')) {
 	exit(1);
 }
 
-function id($val)
+/**
+ * @param \Tester\TestCase $val
+ * @return \Tester\TestCase
+ */
+function id(\Tester\TestCase $val)
 {
 	return $val;
+}
+
+/**
+ * @param \Tester\TestCase $testCase
+ */
+function run(\Tester\TestCase $testCase) {
+	$testCase->run(isset($_SERVER['argv'][1]) ? $_SERVER['argv'][1] : NULL);
 }
 
 $configurator = new \Nette\Config\Configurator;

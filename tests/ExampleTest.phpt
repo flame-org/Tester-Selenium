@@ -2,6 +2,7 @@
 /**
  * Class ExampleTest
  *
+ * @testCase \Flame\Tester\Selenium\Tests\ExampleTest
  * @author: Jiří Šifalda <sifalda.jiri@gmail.com>
  * @date: 14.05.13
  */
@@ -84,4 +85,4 @@ class ExampleTest extends TestCase
 
 }
 
-id(new ExampleTest($container))->run();
+run(new ExampleTest($container));
