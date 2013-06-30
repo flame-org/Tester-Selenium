@@ -20,7 +20,6 @@ Look at this [example test](https://github.com/flame-org/Tester-Selenium/blob/ma
 ###Requirements
 * [nette/tester](https://github.com/nette/tester)
 * [facebook/php-webdriver](https://github.com/facebook/php-webdriver)
-* [nette/nette](https://github.com/nette/nette) - For running example tests only
 
 #### More information
 

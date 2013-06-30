@@ -9,25 +9,8 @@ if (!class_exists('Tester\Assert')) {
 }
 
 /**
- * @param \Tester\TestCase $val
- * @return \Tester\TestCase
- */
-function id(\Tester\TestCase $val)
-{
-	return $val;
-}
-
-/**
  * @param \Tester\TestCase $testCase
  */
 function run(\Tester\TestCase $testCase) {
 	$testCase->run(isset($_SERVER['argv'][1]) ? $_SERVER['argv'][1] : NULL);
 }
-
-$configurator = new \Nette\Config\Configurator;
-$configurator->setDebugMode(false);
-$configurator->setTempDirectory(__DIR__ . '/../temp');
-$configurator->createRobotLoader()
-	->addDirectory(__DIR__)
-	->register();
-return $configurator->createContainer();

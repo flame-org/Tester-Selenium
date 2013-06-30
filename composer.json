@@ -48,10 +48,6 @@
         "facebook/php-webdriver": "dev-master"
     },
 
-    "require-dev": {
-        "nette/nette": ">=2.0.8"
-    },
-
     "autoload": {
         "psr-0": {"Flame": ""},
         "classmap": [

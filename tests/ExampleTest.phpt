@@ -14,7 +14,7 @@ use Flame\Tester\Selenium\TestCase;
 use Tester\Assert;
 use WebDriverBy;
 
-$container = require __DIR__ . '/bootstrap.php';
+require __DIR__ . '/bootstrap.php';
 
 class ExampleTest extends TestCase
 {
@@ -85,4 +85,4 @@ class ExampleTest extends TestCase
 
 }
 
-run(new ExampleTest($container));
+run(new ExampleTest());
