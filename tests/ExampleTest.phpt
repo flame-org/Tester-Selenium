@@ -69,7 +69,7 @@ class ExampleTest extends TestCase
 //		}, '\NoSuchElementWebDriverError');
 
 		//For now correct way
-		Assert::false($this->existElement(WebDriverBy::id('very-bad-id')));
+		Assert::false($this->driver->hasElement(WebDriverBy::id('very-bad-id')));
 	}
 
 	public function testClickToLink()

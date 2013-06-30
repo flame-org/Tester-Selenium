@@ -8,6 +8,7 @@
 namespace Flame\WebDriver;
 
 use Flame\Tester\Selenium\InvalidArgumentException;
+use WebDriverWait;
 
 class Driver extends \WebDriver
 {
@@ -29,6 +30,28 @@ class Driver extends \WebDriver
 	public function isAjaxInProgress()
 	{
 		return (bool) $this->executeScript('return jQuery.active == 0');
+	}
+
+	/**
+	 * @return void
+	 */
+	public function waitForAjax()
+	{
+		$wait = new WebDriverWait($this);
+		$wait->until(function($driver) {
+			/** @var \Flame\WebDriver\Driver $driver */
+			return $driver->isAjaxInProgress();
+		});
+	}
+
+
+	/**
+	 * @param \WebDriverBy $by
+	 * @return bool
+	 */
+	public function hasElement(\WebDriverBy $by)
+	{
+		return (bool) count($this->findElements($by));
 	}
 
 	/**

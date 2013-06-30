@@ -64,18 +64,6 @@ class TestCase extends \Tester\TestCase
 	}
 
 	/**
-	 * @return void
-	 */
-	public function waitForAjax()
-	{
-		$wait = new WebDriverWait($this->driver);
-		$wait->until(function($driver) {
-			/** @var \Flame\WebDriver\Driver $driver */
-			return $driver->isAjaxInProgress();
-		});
-	}
-
-	/**
 	 * @param null $url
 	 * @return string
 	 */
@@ -86,19 +74,6 @@ class TestCase extends \Tester\TestCase
 		$url = $urlS->getUrl();
 		$this->driver->get($url);
 		return $url;
-	}
-
-	/**
-	 * @param \WebDriverBy $by
-	 * @return bool
-	 */
-	public function existElement(\WebDriverBy $by)
-	{
-		try {
-			return (bool) count($this->driver->findElements($by));
-		}catch (\NoSuchElementWebDriverError $ex) {
-			return false;
-		}
 	}
 
 	/**
