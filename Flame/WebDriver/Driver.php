@@ -7,13 +7,17 @@
  */
 namespace Flame\WebDriver;
 
-use Flame\Tester\Selenium\InvalidArgumentException;
+use Flame\Tester\Selenium\InvalidStateException;
 use WebDriverWait;
+use Flame\Tester\Types\Url;
 
 class Driver extends \WebDriver
 {
 
 	const SERVER_URL = 'http://localhost:4444/wd/hub';
+
+	/** @var  string */
+	private $testingUrl;
 
 	/**
 	 * @param string $executor
@@ -22,6 +26,16 @@ class Driver extends \WebDriver
 	public function __construct($executor = self::SERVER_URL, array $desired_capabilities = array())
 	{
 		parent::__construct($executor, $desired_capabilities);
+	}
+
+	/**
+	 * @param $url
+	 * @return $this
+	 */
+	public function setTestingUrl($url)
+	{
+		$this->testingUrl = (string) $url;
+		return $this;
 	}
 
 	/**
@@ -44,6 +58,46 @@ class Driver extends \WebDriver
 		});
 	}
 
+	/**
+	 * @param null $url
+	 * @return $this|void
+	 * @throws \Flame\Tester\Selenium\InvalidStateException
+	 */
+	public function open($url = null)
+	{
+		if($this->testingUrl === null && $url === null) {
+			throw new InvalidStateException('Url for testing is not set.');
+		}
+
+		if($this->testingUrl !== null) {
+			$urlS = new Url($this->testingUrl);
+			$urlS->append($url);
+			$url = $urlS->getUrl();
+		}
+
+		$this->get($url);
+		return $this;
+	}
+
+	/**
+	 * @param $fragment
+	 * @param bool $append
+	 * @return bool
+	 */
+	public function isUrlFragment($fragment, $append = true)
+	{
+		if($append === true) {
+			$url = new Url($this->testingUrl);
+			$url->append($fragment);
+			$fragment = $url->getUrl();
+		}
+
+		if(strpos($this->getCurrentURL(), $fragment) === false) {
+			return false;
+		}
+
+		return true;
+	}
 
 	/**
 	 * @param \WebDriverBy $by

@@ -24,7 +24,7 @@ class ExampleTest extends TestCase
 
 	public function testName()
 	{
-		$this->open();
+		$this->driver->open();
 
 		Assert::equal(
 			'Jiří Šifalda',
@@ -36,7 +36,7 @@ class ExampleTest extends TestCase
 
 	public function testAboutMe()
 	{
-		$this->open();
+		$this->driver->open();
 
 		Assert::equal('Freelance Web Developer', $this->driver
 			->findElement(WebDriverBy::className('subhead'))
@@ -45,14 +45,14 @@ class ExampleTest extends TestCase
 
 	public function testTitle()
 	{
-		$this->open();
+		$this->driver->open();
 
 		Assert::equal('Jiří Šifalda - Freelance Web Developer', $this->driver->getTitle());
 	}
 
 	public function testAttribute()
 	{
-		$this->open();
+		$this->driver->open();
 
 		Assert::same('Jiří Šifalda (JSifalda)', $this->driver
 			->findElement(WebDriverBy::xpath('/html/body/div/div[1]/div[1]/img'))
@@ -61,7 +61,7 @@ class ExampleTest extends TestCase
 
 	public function testFindNotExistingElement()
 	{
-		$this->open();
+		$this->driver->open();
 
 		//This way is bad a idea! Throwing exception in driver
 //		Assert::throws(function () {
@@ -74,13 +74,13 @@ class ExampleTest extends TestCase
 
 	public function testClickToLink()
 	{
-		$this->open();
+		$this->driver->open();
 
 		$this->driver
 			->findElement(WebDriverBy::linkText('Symb.me'))
 			->click();
 
-		Assert::contains('symb.me', $this->driver->getCurrentURL());
+		Assert::true($this->driver->isUrlFragment('symb.me', false));
 	}
 
 }

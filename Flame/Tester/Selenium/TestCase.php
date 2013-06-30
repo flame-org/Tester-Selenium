@@ -8,10 +8,8 @@
 
 namespace Flame\Tester\Selenium;
 
-use Flame\Tester\Types\Url;
 use Flame\WebDriver\Driver;
 use WebDriverBrowserType;
-use WebDriverWait;
 
 class TestCase extends \Tester\TestCase
 {
@@ -31,6 +29,7 @@ class TestCase extends \Tester\TestCase
 	public function setUp()
 	{
 		$this->driver = $this->createDriver();
+		$this->driver->setTestingUrl($this->testingUrl);
 	}
 
 	/**
@@ -41,39 +40,6 @@ class TestCase extends \Tester\TestCase
 		if ($this->driver instanceof Driver) {
 			$this->driver->quit();
 		}
-	}
-
-	/**
-	 * @param $fragment
-	 * @param bool $append
-	 * @return bool
-	 */
-	public function isUrlFragment($fragment, $append = true)
-	{
-		if($append === true) {
-			$url = new Url($this->testingUrl);
-			$url->append($fragment);
-			$fragment = $url->getUrl();
-		}
-
-		if(strpos($this->driver->getCurrentURL(), $fragment) === false) {
-			return false;
-		}
-
-		return true;
-	}
-
-	/**
-	 * @param null $url
-	 * @return string
-	 */
-	public function open($url = null)
-	{
-		$urlS = new Url($this->testingUrl);
-		$urlS->append($url);
-		$url = $urlS->getUrl();
-		$this->driver->get($url);
-		return $url;
 	}
 
 	/**
