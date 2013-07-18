@@ -8,11 +8,12 @@ Look at [tests folder](https://github.com/flame-org/Tester-Selenium/tree/master/
 
 ##Instalation
 1. Add `flame/tester-selenium` in your dev-dependencies
-2. Install tester's dependencies with composer
-3. Download java server from [http://code.google.com/p/selenium/downloads/list](http://code.google.com/p/selenium/downloads/list)
-4. Run java server
+2. Copy ["repositories"](https://github.com/flame-org/Tester-Selenium/blob/master/composer.json#L26)) section into your composer.json
+3. Install tester's dependencies with composer
+4. Download java server from [http://code.google.com/p/selenium/downloads/list](http://code.google.com/p/selenium/downloads/list)
+5. Run java server
 	`java -jar selenium-server-standalone-<version>.jar`
-5. Run your tests
+6. Run your tests
 
 #### How to run exmaple selenium tests?
 `php libs/bin/tester tests/`
