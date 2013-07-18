@@ -19,21 +19,6 @@ class SymbPresenterTest extends TestCase
 
 	protected $testingUrl = 'symb.me';
 
-	public function testLoginBoxElements()
-	{
-		$this->driver->open();
-		$this->getLightBox();
-
-		Assert::true($this->driver->hasElement(WebDriverBy::id('frm-signInForm-email')));
-		Assert::true($this->driver->hasElement(WebDriverBy::id('frm-signInForm-password')));
-		Assert::true($this->driver->hasElement(WebDriverBy::id('frm-signInForm-send')));
-
-		Assert::true($this->driver->hasElement(WebDriverBy::id('frm-signUpForm-email')));
-		Assert::true($this->driver->hasElement(WebDriverBy::id('frm-signUpForm-password')));
-		Assert::true($this->driver->hasElement(WebDriverBy::id('frm-signUpForm-passwordConfirm')));
-		Assert::true($this->driver->hasElement(WebDriverBy::id('frm-signUpForm-send')));
-	}
-
 	public function testLoginBoxLoginFormSubmit()
 	{
 		$this->driver->open();
